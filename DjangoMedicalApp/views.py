@@ -37,6 +37,8 @@ class CompanyViewSet(viewsets.ViewSet):
         except:
             dict_response={"error":True,"message":"Error During Updating Company Data"}
 
+        return Response(dict_response)
+
 
 company_list=CompanyViewSet.as_view({"get":"list"})
 company_creat=CompanyViewSet.as_view({"post":"create"})
