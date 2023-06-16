@@ -1,4 +1,6 @@
 Pharmacy Management System
+
+
 This is a Pharmacy Management System developed using Python with Django framework for the backend, and React for the frontend. It provides a comprehensive solution for managing various aspects of a pharmacy, including inventory management, sales, purchases, and customer management.
 
 Technologies Used
