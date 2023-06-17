@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import generics, viewsets
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -62,6 +62,27 @@ class CompanyBankViewset(viewsets.ViewSet):
         serializer=CompanyBankSerializer(companybank,many=True,context={"request":request})
         response_dict={"error":False,"message":"All Company Bank List Data","data":serializer.data}
         return Response(response_dict)
+    
+    def retrieve(self,request,pk=None):
+        queryset=CompanyBank.objects.all()
+        companybank=get_object_or_404(queryset,pk=pk)
+        serializer=CompanyBankSerializer(companybank,context={"request":request})
+        return Response({"error":False,"message":"Single Data Fetch","data":serializer.data})
+    
+    def update(self,request,pk=None):
+        queryset=CompanyBank.objects.all()
+        companybank=get_object_or_404(queryset,pk=pk)
+        serializer=CompanyBankSerializer(companybank,data=request.data,context={"request":request})
+        serializer.is_valid()
+        serializer.save()
+        return Response({"error":False,"message":"Data Has Been Updated"})
+    
+class CompanyNameViewSet(generics.ListAPIView):
+    serializer_class = CompanySerliazer
+    def get_queryset(self):
+        name=self.kwargs["name"]
+        return Company.objects.filter(name=name)
+
 
 
 company_list=CompanyViewSet.as_view({"get":"list"})
