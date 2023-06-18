@@ -67,14 +67,6 @@ class Bill(models.Model):
 	added_on=models.DateTimeField(auto_now_add=True)
 	objects=models.Manager()
 
-class EmployeeSalary(models.Model):
-	id=models.AutoField(primary_key=True)
-	employee_id=models.ForeignKey(Employee,on_delete=models.CASCADE)
-	salary_date=models.DateField()
-	salary_amount=models.CharField(max_length=255)
-	added_on=models.DateTimeField(auto_now_add=True)
-	objects=models.Manager()
-
 class BillDetails(models.Model):
 	id=models.AutoField(primary_key=True)
 	bill_id=models.ForeignKey(Bill,on_delete=models.CASCADE)
@@ -109,6 +101,14 @@ class CompanyBank(models.Model):
 	bank_account_no=models.CharField(max_length=255)
 	ifsc_no=models.CharField(max_length=255)
 	company_id=models.ForeignKey(Company,on_delete=models.CASCADE)
+	added_on=models.DateTimeField(auto_now_add=True)
+	objects=models.Manager()
+
+class EmployeeSalary(models.Model):
+	id=models.AutoField(primary_key=True)
+	employee_id=models.ForeignKey(Employee,on_delete=models.CASCADE)
+	salary_date=models.DateField()
+	salary_amount=models.CharField(max_length=255)
 	added_on=models.DateTimeField(auto_now_add=True)
 	objects=models.Manager()
 
