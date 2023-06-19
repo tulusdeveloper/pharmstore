@@ -19,7 +19,7 @@ class Medicine(models.Model):
 	name=models.CharField(max_length=255)
 	medical_type=models.CharField(max_length=255)
 	buy_price=models.CharField(max_length=255)
-	# sell_price=models.CharField(max_length=255)
+	sell_price=models.CharField(max_length=255,default='0.00')
 	c_gst=models.CharField(max_length=255)
 	s_gst=models.CharField(max_length=255)
 	batch_no=models.CharField(max_length=255)

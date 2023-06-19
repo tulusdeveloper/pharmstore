@@ -83,7 +83,7 @@ class CompanyNameViewSet(generics.ListAPIView):
         name=self.kwargs["name"]
         return Company.objects.filter(name=name)
 
-class MedicineViewset(viewsets.ViewSet):
+class MedicineViewSet(viewsets.ViewSet):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
