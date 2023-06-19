@@ -27,7 +27,7 @@ class MedicineSerliazer(serializers.ModelSerializer):
         response['company']=CompanySerliazer(instance.company_id).data
         return response
 
-class MedicalDetailsSerliazer(serializers.ModelSerializer):
+class MedicalDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model=MedicalDetails
         fields="__all__"
@@ -37,32 +37,32 @@ class MedicalDetailsSerliazer(serializers.ModelSerializer):
         response['medicine']=MedicineSerliazer(instance.medicine_id).data
         return response
     
-class EmployeeSerliazer(serializers.ModelSerializer):
+class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model=Employee
         fields="__all__"
 
-class CustomerSerliazer(serializers.ModelSerializer):
+class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model=Customer
         fields="__all__"
 
-class BillSerliazer(serializers.ModelSerializer):
+class BillSerializer(serializers.ModelSerializer):
     class Meta:
         model=Bill
         fields="__all__"
 
     def to_representation(self, instance):
         response=super().to_representation(instance)
-        response['customer']=CustomerSerliazer(instance.customer_id).data
+        response['customer']=CustomerSerializer(instance.customer_id).data
         return response
 
-class CustomerRequestSerliazer(serializers.ModelSerializer):
+class CustomerRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model=CustomerRequest
         fields="__all__"
 
-class CompanyAccountSerliazer(serializers.ModelSerializer):
+class CompanyAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model=CompanyAccount
         fields="__all__"
@@ -72,13 +72,13 @@ class CompanyAccountSerliazer(serializers.ModelSerializer):
         response['company']=CompanySerliazer(instance.company_id).data
         return response
     
-class EmployeeBankSerliazer(serializers.ModelSerializer):
+class EmployeeBankSerializer(serializers.ModelSerializer):
     class Meta:
         model=EmployeeBank
         fields="__all__"
 
     def to_representation(self, instance):
         response=super().to_representation(instance)
-        response['employee']=EmployeeSerliazer(instance.employee_id).data
+        response['employee']=EmployeeSerializer(instance.employee_id).data
         return response
   
