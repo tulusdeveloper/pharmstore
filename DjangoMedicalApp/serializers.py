@@ -61,6 +61,11 @@ class CustomerRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model=CustomerRequest
         fields="__all__"
+    
+    def to_representation(self, instance):
+        response=super().to_representation(instance)
+        response['company']=CustomerRequest(instance.company_id).data
+        return response
 
 class CompanyAccountSerializer(serializers.ModelSerializer):
     class Meta:
